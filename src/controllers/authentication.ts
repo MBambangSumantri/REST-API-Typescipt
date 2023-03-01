@@ -15,16 +15,16 @@ export const register = async (req: express.Request, res: express.Response) => {
     const existingUser = await getUserByEmail(email);
 
     if (existingUser) {
-      console.log("user sudah ada bro");
+      console.log("email sudah dipakai bro");
       return res.sendStatus(400);
     }
     const salt = random();
     const user = await createUser({
       email,
       username,
-      authenticaton: {
+      authentication: {
         salt,
-        password: authentication(salt, password),
+        password: random(),
       },
     });
 
