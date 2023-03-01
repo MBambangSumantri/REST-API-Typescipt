@@ -24,7 +24,7 @@ export const register = async (req: express.Request, res: express.Response) => {
       username,
       authentication: {
         salt,
-        password: random(),
+        password: authentication(salt, password),
       },
     });
 
